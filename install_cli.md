@@ -1,80 +1,56 @@
----
+<div class="box">
+<div class="display"><input type="text" readonly size="18" id="d"></div>
+<div class="keys">
+    <p><input type="button" class="button gray" 
 
+    value="mrc" onclick='c("Created....................")'>
+    <input type="button" class="button gray" 
 
+    value="m-" onclick='c("...............by............")'>
+    <input type="button" class="button gray" value="
+    m+" onclick='c(".....................Anoop")'>
+    <input type="button" class="button pink" 
 
-copyright:
+    value="/" onclick='v("/")'></p>
+    <p><input type="button" class="button black" 
 
-  years: 2015，2017
+    value="7" onclick='v("7")'><input type="button" 
 
-lastupdated: "2017-06-31"
+    class="button black" value="8" onclick='v("8")'>
+    <input type="button" class="button black" value="9" 
 
+    onclick='v("9")'><input type="button" 
 
----
+    class="button pink" value="*" onclick='v("*")'></p>
+    <p><input type="button" class="button black" 
 
-{:new_window: target="_blank"}
-{:shortdesc: .shortdesc}
-{:prereq: .prereq}
-{:download: .download}
-{:pre: .pre}
-{:app_name: data-hd-keyref="app_name"}
-{:app_key: data-hd-keyref="app_key"}
-{:app_secret: data-hd-keyref="app_secret"}
-{:app_url: data-hd-keyref="app_url"}
-{:host: data-hd-keyref="host"}
-{:org_name: data-hd-keyref="org_name"}
-{:route: data-hd-keyref="route"}
-{:space_name: data-hd-keyref="space_name"}
-{:service_name: data-hd-keyref="service_name"}
-{:service_instance_name: data-hd-keyref="service_instance_name"}
-{:user_ID: data-hd-keyref="user_ID"}
-{:tip: .tip}
+    value="4" onclick='v("4")'><input type="button" 
 
-# Download, modify, and redeploy your Cloud Foundry app with the command line interface
+    class="button black" value="5" onclick='v("5")'>
+    <input type="button" class="button black" value="6" 
 
-Use {{site.data.keyword.Bluemix_notm}} command line interface to download, modify, and redeploy your Cloud Foundry applications and service instances.
-{:shortdesc}
+    onclick='v("6")'><input type="button" 
 
-Before you begin, download and install the {{site.data.keyword.Bluemix_notm}} command line interface. 
+    class="button pink" value="-" onclick='v("-")'></p>
+    <p><input type="button" class="button black" 
 
-<p>
-<a class="xref" href="https://clis.ng.bluemix.net" target="_blank" title="(Opens in a new tab or window)"><img class="image" src="images/btn_bx_commandline.svg" alt="Download Bluemix command line interface" /> </a>
-</p>
+    value="1" onclick='v("1")'><input type="button" 
 
-**Restriction:** The command line tool is not supported by Cygwin. Use the tool in a command line window other than the Cygwin command line window.
-{:prereq}
+    class="button black" value="2" onclick='v("2")'>
+    <input type="button" class="button black" value="3" 
 
-After you install the command line interface, you can get started:
+    onclick='v("3")'><input type="button" 
 
-  1. {: download} Download the code for your app to a new directory to set up your development environment.
-  
-    <a class="xref" href="http://bluemix.net" target="_blank" title="(Opens in a new tab or window)"><img class="image" src="images/btn_starter-code.svg" alt="Download application code" /> </a>
+    class="button pink" value="+" onclick='v("+")'></p>
+    <p><input type="button" class="button black" 
 
-  2. Change to the directory where your code is located.
+    value="0" onclick='v("0")'><input type="button" 
 
-  <pre class="pre"><code class="hljs">cd <var class="keyword varname">your_new_directory</var></code></pre>
+    class="button black" value="." onclick='v(".")'>
+    <input type="button" class="button black" value="C" 
 
-  3.  Make changes to your app code as you see fit. For example, if you are using a {{site.data.keyword.Bluemix}} sample application and your app contains the `src/main/webapp/index.html` file, you can modify it and edit "Thanks for creating ..." to say something new. Ensure the app runs locally before you deploy it back to {{site.data.keyword.Bluemix_notm}}.
+    onclick='c("")'><input type="button" 
 
-    Take note of the `manifest.yml` file. When deploying your app back to {{site.data.keyword.Bluemix_notm}}, this file is used to determine your application’s URL, memory allocation, number of instances, and other crucial parameters. You can [read more about the manifest file](https://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html){: new_window} in the Cloud Foundry documentation.
-
-    Also pay attention to the `README.md` file, which contains details such as build instructions if applicable.
-
-    Note: If your application is a Liberty app, you must build it before redeploying.
-
-  4. Connect and log in to {{site.data.keyword.Bluemix_notm}}.
-
-  <pre class="pre"><code class="hljs">bluemix api https://api.<span class="keyword" data-hd-keyref="DomainName">DomainName</span></code></pre>
-
-  <pre class="pre"><code class="hljs">bluemix login -u <var class="keyword varname" data-hd-keyref="user_ID">username</var> -o <var class="keyword varname" data-hd-keyref="org_name">org_name</var> -s <var class="keyword varname" data-hd-keyref="space_name">space_name</var></code></pre>
-
-  If you are using a federated ID, use the `-sso` option.
-
-  <pre class="pre"><code class="hljs">bluemix login  -o <var class="keyword varname" data-hd-keyref="org_name">org_name</var> -s <var class="keyword varname" data-hd-keyref="space_name">space_name</var> -sso</code></pre>
-  
-  **Note**: You must add single or double quotes around `username`, `org_name`, and  `space_name` if the value contains a space, for example, `-o "my org"`.
-
-  5. From <var class="keyword varname">your_new_directory</var>, redeploy your app to {{site.data.keyword.Bluemix_notm}} by using the `bluemix app push` command. For more information about the `bx app push` command, see [Uploading your application](/docs/starters/upload_app.html).
-
-  <pre class="pre"><code class="hljs">bluemix app push <var class="keyword varname" data-hd-keyref="app_name">app_name</var></code></pre>
-
-  6. Access your app by browsing to https://<var class="keyword varname" data-hd-keyref="app_url">app_url</var>.<span class="keyword" data-hd-keyref="APPDomain">AppDomainName</span>.
+    class="button orange" value="=" onclick='e()'></p>
+</div>
+</div>
